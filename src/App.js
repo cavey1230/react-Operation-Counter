@@ -1,9 +1,10 @@
 import React from 'react';
 import {ActionPad} from "./compent/ActionPad"
+import "./css/App.css"
 
 function App(props) {
     return (
-        <div>
+        <div className="center_pad">
             <ActionPad action={props.resultAction}
                        result={props.result}
                        dis={props.dis}

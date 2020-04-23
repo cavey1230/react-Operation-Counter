@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {Display} from "./Display";
 
 class ActionPad extends Component {
@@ -11,7 +11,6 @@ class ActionPad extends Component {
             default:
                 this.props.disaction(clickIn)
         }
-        console.log(this.props.dis);
     };
 
     equals(input) {
@@ -23,16 +22,16 @@ class ActionPad extends Component {
                 let index = countArr.indexOf(oper[i]);
                 switch (oper[i]) {
                     case "*":
-                        operNum = parseInt(countArr[index - 1]) * parseInt(countArr[index + 1]);
+                        operNum = (parseFloat(countArr[index - 1]) * parseFloat(countArr[index + 1])).toFixed(2);
                         break;
                     case "/":
-                        operNum = parseInt(countArr[index - 1]) / parseInt(countArr[index + 1]);
+                        operNum = (parseFloat(countArr[index - 1]) / parseFloat(countArr[index + 1])).toFixed(2);
                         break;
                     case "+":
-                        operNum = parseInt(countArr[index - 1]) + parseInt(countArr[index + 1]);
+                        operNum = (parseFloat(countArr[index - 1]) + parseFloat(countArr[index + 1])).toFixed(2);
                         break;
                     case "-":
-                        operNum = parseInt(countArr[index - 1]) - parseInt(countArr[index + 1]);
+                        operNum = (parseFloat(countArr[index - 1]) - parseFloat(countArr[index + 1])).toFixed(2);
                         break;
                     default:
                         console.log("err for operaction");
@@ -58,32 +57,46 @@ class ActionPad extends Component {
 
     render() {
         const numButton = () => {
-            let button = [
-                "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            let button = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
             return button.map((item, i) =>
-                <button key={"button_" + i} className="numButton" id={item}
-                        onClick={() => this.buttonClick(i)}>{i}</button>);
+                <button key={"button_" + i + 1} className="numButton" id={item}
+                        onClick={() => this.buttonClick(i + 1)}>{i + 1}</button>);
         };
-
         const operButton = () => {
-            let button = ["/", "*", "-", "+", "."];
-            let buttonID = ["divide", "multiply", "subtract", "add", "decimal"];
+            let button = [ "*", "-", "+"];
+            let buttonID = ["divide", "multiply", "subtract", "add"];
             return button.map((item, i) =>
                 <button key={"button_" + buttonID[i]} className="operButton" id={buttonID[i]}
                         onClick={() => this.buttonClick(item)}>{item}</button>);
         };
         return (
-            <div>
+            <Fragment>
                 <Display Str_slice={this.props.dis} result={this.props.result}/>
-                {numButton()}
-                {operButton()}
-                <button key="button_equals" id="equButton"
-                        onClick={() => this.equalsClick()}>=
-                </button>
-                <button key="button_ace" id="acButton"
-                        onClick={() => this.buttonClick("ACE")}>AC
-                </button>
-            </div>
+                <div className="action_group">
+                    <div className="button_group">
+                        <div className="num_group">
+                            <button key={"button_zero"} className="numButton" id="zero"
+                                    onClick={() => this.buttonClick(0)}>0
+                            </button>
+                            <button key="button_decimal" className="numButton" id="decimal"
+                                    onClick={() => this.buttonClick(".")}>.
+                            </button>
+                            {numButton()}
+                            <button key="button_ace" className="spebutton" id="acButton"
+                                    onClick={() => this.buttonClick("ACE")}>AC
+                            </button>
+                            <button key="button_divide" className="operButton" id="divide"
+                                    onClick={() => this.buttonClick("/")}>/</button>
+                        </div>
+                    </div>
+                    <div className="oper_group">
+                        {operButton()}
+                        <button key="button_equals" className="spebutton" id="equButton"
+                                onClick={() => this.equalsClick()}>=
+                        </button>
+                    </div>
+                </div>
+            </Fragment>
         )
     };
 }

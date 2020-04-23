@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+}
+
+.center_pad {
+    min-height: 15rem;
+    max-width: 16rem;
+    background-color: #e6f1f1;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem black;
+}
+
+.button_group {
+    max-width: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.numButton, .operButton, .spebutton {
+    width: 4rem;
+    height: 3rem;
+    border: 1px solid #80808042;
+    font-family: "JetBrains Mono", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #26bfbffc;
+}
+
+.operButton {
+    background-color: #209cd2f7;
+}
+
+.num_group {
+    max-width: 12rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+#zero, #acButton {
+    width: 8rem;
+}
+
+#acButton {
+    background-color: #d82e2ecc;
+}
+
+#equButton {
+    height: 6rem;
+    background-color: #3d474c;
+}
+
+.oper_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.action_group {
+    display: flex;
+}
+
+#display {
+    text-align: right;
+    margin-bottom: 1rem;
+}
+p,h1{
+    margin: 0;
+    padding: 0;
+    max-width: 16rem;
+    overflow: auto;
+}
