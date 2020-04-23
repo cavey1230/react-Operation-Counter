@@ -5,7 +5,7 @@ const displayReducer = (state = "", action) => {
         case "REMOVE":
             return ""
         case  "GET":
-            return action.input
+            return state===""? "":action.input
         default :
             return state
 

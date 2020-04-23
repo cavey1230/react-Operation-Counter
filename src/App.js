@@ -9,6 +9,7 @@ function App(props) {
                        dis={props.dis}
                        disaction={props.displayAction}
                        removedis={props.removeAction}
+                       getResAction={props.getResAction}
             />
         </div>
     )

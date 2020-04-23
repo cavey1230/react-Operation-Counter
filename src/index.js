@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import {createStore, combineReducers} from "redux";
 import {Provider, connect} from "react-redux";
 import {equalsReducer, inputAction} from "./reducer/equalsReducer";
-import {displayReducer, displayAction,removeAction} from "./reducer/displayReducer";
+import {displayReducer, displayAction,removeAction,getResAction} from "./reducer/displayReducer";
 
 const reducers = combineReducers({
     eque: equalsReducer,
@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         removeAction: ()=>{
             dispatch(removeAction());
+        },
+        getResAction:(Reg)=>{
+            dispatch(getResAction(Reg));
         }
     }
 };
